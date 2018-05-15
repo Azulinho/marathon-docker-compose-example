@@ -1,0 +1,42 @@
+{
+  "id": "/test1234",
+  "cmd": "nix-shell -p docker_compose  --run 'docker-compose up'",
+  "cpus": 0.01,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "acceptedResourceRoles": [
+    "*"
+  ],
+  "env": {
+    "PATH": "/run/current-system/sw/bin/:$PATH",
+    "NIX_PATH": "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels",
+    "NIXPKGS_CONFIG": "/etc/nix/nixpkgs-config.nix",
+    "NIX_PROFILES": "/run/current-system/sw /nix/var/nix/profiles/default /var/lib/mesos/.nix-profile /etc/profiles/per-user/mesos",
+    "NIX_USER_PROFILE_DIR": "/nix/var/nix/profiles/per-user/mesos"
+  },
+  "labels": {
+    "HAPROXY_0_REDIRECT_TO_HTTPS": "false",
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "test1234.marathon.mesos"
+  },
+  "portDefinitions": [
+    {
+      "port": 10011,
+      "protocol": "tcp",
+      "name": "default",
+      "labels": {}
+    }
+  ],
+  "uris": [
+    "https://raw.githubusercontent.com/Azulinho/marathon-docker-compose-example/master/docker-compose.yml"
+  ],
+  "fetch": [
+    {
+      "uri": "https://raw.githubusercontent.com/Azulinho/marathon-docker-compose-example/master/docker-compose.yml",
+      "extract": true,
+      "executable": false,
+      "cache": false
+    }
+  ]
+}
